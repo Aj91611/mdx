@@ -1,0 +1,24 @@
+# Compiler and flags
+CC = g++
+CFLAGS = -std=c++11 -Wall
+
+# Source files
+SRCS = Main.cpp Book.cpp Date.cpp Librarian.cpp Member.cpp Person.cpp
+
+# Object files
+OBJS = $(SRCS:.cpp=.o)
+
+# Executable name
+EXEC = LibrarySystem
+
+# Rule to build executable
+$(EXEC): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS)
+
+# Rule to build object files
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean rule
+clean:
+	rm -f $(OBJS) $(EXEC)
